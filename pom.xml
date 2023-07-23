@@ -67,6 +67,52 @@
                     </excludes>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <executions>
+                    <execution>
+                        <id>generate-postgres</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <!-- JDBC connection parameters -->
+                            <jdbc>
+                                <driver>${datasource.driver}</driver>
+                                <url>${datasource.jdbcUrl}</url>
+                                <user>${datasource.username}</user>
+                                <password>${datasource.password}</password>
+                            </jdbc>
+                            <!-- Generator parameters -->
+                            <generator>
+                                <database>
+                                    <name>
+                                        org.jooq.meta.postgres.PostgresDatabase
+                                    </name>
+                                    <includes>.*</includes>
+                                    <excludes/>
+                                    <inputSchema>public</inputSchema>
+                                </database>
+                                <generate>
+                                    <pojos>true</pojos>
+                                    <pojosEqualsAndHashCode>true</pojosEqualsAndHashCode>
+                                    <javaTimeTypes>true</javaTimeTypes>
+                                    <fluentSetters>true</fluentSetters>
+                                    <daos>true</daos>
+                                </generate>
+                                <target>
+                                    <packageName>com.bros.foodorderingsystem.model</packageName>
+                                    <directory>target/generated-sources/jooq</directory>
+                                </target>
+                            </generator>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
