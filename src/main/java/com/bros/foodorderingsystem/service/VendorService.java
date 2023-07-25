@@ -1,8 +1,6 @@
 package com.bros.foodorderingsystem.service;
 
 import com.bros.foodorderingsystem.api.request.CreateVendorRequest;
-import com.bros.foodorderingsystem.model.tables.Vendor;
-import com.bros.foodorderingsystem.model.tables.records.VendorRecord;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
