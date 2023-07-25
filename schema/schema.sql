@@ -48,13 +48,12 @@ create table public.order
     id         UUID primary key,
     student_id varchar(255) not null,
     vendor_id  UUID         not null,
-    item_id    UUID         not null,
     status     varchar(255) not null,
+    otp        varchar(255) not null,
     created_at timestamp    not null default now(),
     updated_at timestamp    not null default now(),
     foreign key (student_id) references student (id),
     foreign key (vendor_id) references vendor (id),
-    foreign key (item_id) references item (id)
 );
 
 -- drop table if exists public.order_items;
@@ -67,7 +66,7 @@ create table public.order_items
     quantity   int       not null,
     created_at timestamp not null default now(),
     updated_at timestamp not null default now(),
-    foreign key (order_id) references order (id),
+    foreign key (order_id) references "order" (id),
     foreign key (item_id) references item (id)
 );
 
@@ -81,5 +80,5 @@ create table public.order_rating
     comment    varchar(255) not null,
     created_at timestamp    not null default now(),
     updated_at timestamp    not null default now(),
-    foreign key (order_id) references order (id)
+    foreign key (order_id) references "order" (id)
 );

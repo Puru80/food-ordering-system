@@ -90,20 +90,6 @@ public class OrderDao extends DAOImpl<OrderRecord, com.bros.fooforderingsystem.m
     }
 
     /**
-     * Fetch records that have <code>item_id BETWEEN lowerInclusive AND upperInclusive</code>
-     */
-    public List<com.bros.fooforderingsystem.model.tables.pojos.Order> fetchRangeOfItemId(UUID lowerInclusive, UUID upperInclusive) {
-        return fetchRange(Order.ORDER.ITEM_ID, lowerInclusive, upperInclusive);
-    }
-
-    /**
-     * Fetch records that have <code>item_id IN (values)</code>
-     */
-    public List<com.bros.fooforderingsystem.model.tables.pojos.Order> fetchByItemId(UUID... values) {
-        return fetch(Order.ORDER.ITEM_ID, values);
-    }
-
-    /**
      * Fetch records that have <code>status BETWEEN lowerInclusive AND upperInclusive</code>
      */
     public List<com.bros.fooforderingsystem.model.tables.pojos.Order> fetchRangeOfStatus(String lowerInclusive, String upperInclusive) {
@@ -115,6 +101,20 @@ public class OrderDao extends DAOImpl<OrderRecord, com.bros.fooforderingsystem.m
      */
     public List<com.bros.fooforderingsystem.model.tables.pojos.Order> fetchByStatus(String... values) {
         return fetch(Order.ORDER.STATUS, values);
+    }
+
+    /**
+     * Fetch records that have <code>otp BETWEEN lowerInclusive AND upperInclusive</code>
+     */
+    public List<com.bros.fooforderingsystem.model.tables.pojos.Order> fetchRangeOfOtp(String lowerInclusive, String upperInclusive) {
+        return fetchRange(Order.ORDER.OTP, lowerInclusive, upperInclusive);
+    }
+
+    /**
+     * Fetch records that have <code>otp IN (values)</code>
+     */
+    public List<com.bros.fooforderingsystem.model.tables.pojos.Order> fetchByOtp(String... values) {
+        return fetch(Order.ORDER.OTP, values);
     }
 
     /**

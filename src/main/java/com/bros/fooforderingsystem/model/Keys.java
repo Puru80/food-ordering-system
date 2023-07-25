@@ -47,7 +47,6 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final ForeignKey<ItemRecord, VendorRecord> ITEM__ITEM_VENDOR_ID_FKEY = Internal.createForeignKey(Item.ITEM, DSL.name("item_vendor_id_fkey"), new TableField[] { Item.ITEM.VENDOR_ID }, Keys.VENDOR_PKEY, new TableField[] { Vendor.VENDOR.ID }, true);
-    public static final ForeignKey<OrderRecord, ItemRecord> ORDER__ORDER_ITEM_ID_FKEY = Internal.createForeignKey(Order.ORDER, DSL.name("order_item_id_fkey"), new TableField[] { Order.ORDER.ITEM_ID }, Keys.ITEM_PKEY, new TableField[] { Item.ITEM.ID }, true);
     public static final ForeignKey<OrderRecord, StudentRecord> ORDER__ORDER_STUDENT_ID_FKEY = Internal.createForeignKey(Order.ORDER, DSL.name("order_student_id_fkey"), new TableField[] { Order.ORDER.STUDENT_ID }, Keys.STUDENT_PKEY, new TableField[] { Student.STUDENT.ID }, true);
     public static final ForeignKey<OrderRecord, VendorRecord> ORDER__ORDER_VENDOR_ID_FKEY = Internal.createForeignKey(Order.ORDER, DSL.name("order_vendor_id_fkey"), new TableField[] { Order.ORDER.VENDOR_ID }, Keys.VENDOR_PKEY, new TableField[] { Vendor.VENDOR.ID }, true);
     public static final ForeignKey<OrderItemsRecord, ItemRecord> ORDER_ITEMS__ORDER_ITEMS_ITEM_ID_FKEY = Internal.createForeignKey(OrderItems.ORDER_ITEMS, DSL.name("order_items_item_id_fkey"), new TableField[] { OrderItems.ORDER_ITEMS.ITEM_ID }, Keys.ITEM_PKEY, new TableField[] { Item.ITEM.ID }, true);

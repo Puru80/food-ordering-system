@@ -77,9 +77,9 @@
                     <execution>
                         <id>generate-postgres</id>
                         <phase>generate-sources</phase>
-                        <!--<goals>
+                        <goals>
                             <goal>generate</goal>
-                        </goals>-->
+                        </goals>
                         <configuration>
                             <!-- JDBC connection parameters -->
                             <jdbc>

@@ -20,8 +20,8 @@ public class Order implements Serializable {
     private UUID          id;
     private String        studentId;
     private UUID          vendorId;
-    private UUID          itemId;
     private String        status;
+    private String        otp;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -31,8 +31,8 @@ public class Order implements Serializable {
         this.id = value.id;
         this.studentId = value.studentId;
         this.vendorId = value.vendorId;
-        this.itemId = value.itemId;
         this.status = value.status;
+        this.otp = value.otp;
         this.createdAt = value.createdAt;
         this.updatedAt = value.updatedAt;
     }
@@ -41,16 +41,16 @@ public class Order implements Serializable {
         UUID          id,
         String        studentId,
         UUID          vendorId,
-        UUID          itemId,
         String        status,
+        String        otp,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
     ) {
         this.id = id;
         this.studentId = studentId;
         this.vendorId = vendorId;
-        this.itemId = itemId;
         this.status = status;
+        this.otp = otp;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -101,21 +101,6 @@ public class Order implements Serializable {
     }
 
     /**
-     * Getter for <code>public.order.item_id</code>.
-     */
-    public UUID getItemId() {
-        return this.itemId;
-    }
-
-    /**
-     * Setter for <code>public.order.item_id</code>.
-     */
-    public Order setItemId(UUID itemId) {
-        this.itemId = itemId;
-        return this;
-    }
-
-    /**
      * Getter for <code>public.order.status</code>.
      */
     public String getStatus() {
@@ -127,6 +112,21 @@ public class Order implements Serializable {
      */
     public Order setStatus(String status) {
         this.status = status;
+        return this;
+    }
+
+    /**
+     * Getter for <code>public.order.otp</code>.
+     */
+    public String getOtp() {
+        return this.otp;
+    }
+
+    /**
+     * Setter for <code>public.order.otp</code>.
+     */
+    public Order setOtp(String otp) {
+        this.otp = otp;
         return this;
     }
 
@@ -187,17 +187,17 @@ public class Order implements Serializable {
         }
         else if (!vendorId.equals(other.vendorId))
             return false;
-        if (itemId == null) {
-            if (other.itemId != null)
-                return false;
-        }
-        else if (!itemId.equals(other.itemId))
-            return false;
         if (status == null) {
             if (other.status != null)
                 return false;
         }
         else if (!status.equals(other.status))
+            return false;
+        if (otp == null) {
+            if (other.otp != null)
+                return false;
+        }
+        else if (!otp.equals(other.otp))
             return false;
         if (createdAt == null) {
             if (other.createdAt != null)
@@ -221,8 +221,8 @@ public class Order implements Serializable {
         result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
         result = prime * result + ((this.studentId == null) ? 0 : this.studentId.hashCode());
         result = prime * result + ((this.vendorId == null) ? 0 : this.vendorId.hashCode());
-        result = prime * result + ((this.itemId == null) ? 0 : this.itemId.hashCode());
         result = prime * result + ((this.status == null) ? 0 : this.status.hashCode());
+        result = prime * result + ((this.otp == null) ? 0 : this.otp.hashCode());
         result = prime * result + ((this.createdAt == null) ? 0 : this.createdAt.hashCode());
         result = prime * result + ((this.updatedAt == null) ? 0 : this.updatedAt.hashCode());
         return result;
@@ -235,8 +235,8 @@ public class Order implements Serializable {
         sb.append(id);
         sb.append(", ").append(studentId);
         sb.append(", ").append(vendorId);
-        sb.append(", ").append(itemId);
         sb.append(", ").append(status);
+        sb.append(", ").append(otp);
         sb.append(", ").append(createdAt);
         sb.append(", ").append(updatedAt);
 

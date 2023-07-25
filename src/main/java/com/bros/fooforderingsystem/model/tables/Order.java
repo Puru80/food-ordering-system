@@ -65,14 +65,14 @@ public class Order extends TableImpl<OrderRecord> {
     public final TableField<OrderRecord, UUID> VENDOR_ID = createField(DSL.name("vendor_id"), SQLDataType.UUID.nullable(false), this, "");
 
     /**
-     * The column <code>public.order.item_id</code>.
-     */
-    public final TableField<OrderRecord, UUID> ITEM_ID = createField(DSL.name("item_id"), SQLDataType.UUID.nullable(false), this, "");
-
-    /**
      * The column <code>public.order.status</code>.
      */
     public final TableField<OrderRecord, String> STATUS = createField(DSL.name("status"), SQLDataType.VARCHAR(255).nullable(false), this, "");
+
+    /**
+     * The column <code>public.order.otp</code>.
+     */
+    public final TableField<OrderRecord, String> OTP = createField(DSL.name("otp"), SQLDataType.VARCHAR(255).nullable(false), this, "");
 
     /**
      * The column <code>public.order.created_at</code>.
@@ -134,12 +134,11 @@ public class Order extends TableImpl<OrderRecord> {
 
     @Override
     public List<ForeignKey<OrderRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<OrderRecord, ?>>asList(Keys.ORDER__ORDER_STUDENT_ID_FKEY, Keys.ORDER__ORDER_VENDOR_ID_FKEY, Keys.ORDER__ORDER_ITEM_ID_FKEY);
+        return Arrays.<ForeignKey<OrderRecord, ?>>asList(Keys.ORDER__ORDER_STUDENT_ID_FKEY, Keys.ORDER__ORDER_VENDOR_ID_FKEY);
     }
 
     private transient Student _student;
     private transient Vendor _vendor;
-    private transient Item _item;
 
     public Student student() {
         if (_student == null)
@@ -153,13 +152,6 @@ public class Order extends TableImpl<OrderRecord> {
             _vendor = new Vendor(this, Keys.ORDER__ORDER_VENDOR_ID_FKEY);
 
         return _vendor;
-    }
-
-    public Item item() {
-        if (_item == null)
-            _item = new Item(this, Keys.ORDER__ORDER_ITEM_ID_FKEY);
-
-        return _item;
     }
 
     @Override
@@ -193,7 +185,7 @@ public class Order extends TableImpl<OrderRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row7<UUID, String, UUID, UUID, String, LocalDateTime, LocalDateTime> fieldsRow() {
+    public Row7<UUID, String, UUID, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
         return (Row7) super.fieldsRow();
     }
 }
