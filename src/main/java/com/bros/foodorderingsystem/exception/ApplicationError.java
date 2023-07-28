@@ -1,10 +1,11 @@
 package com.bros.foodorderingsystem.exception;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-@Builder
+@AllArgsConstructor
 @Getter
 public class ApplicationError extends Exception {
 

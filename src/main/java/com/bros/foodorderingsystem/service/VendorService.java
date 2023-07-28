@@ -1,6 +1,7 @@
 package com.bros.foodorderingsystem.service;
 
 import com.bros.foodorderingsystem.api.request.CreateVendorRequest;
+import com.bros.foodorderingsystem.model.tables.pojos.Vendor;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,9 @@ public class VendorService {
                 createVendorRequest.getQrCode(),
                 createVendorRequest.getShopImage())
             .execute();
+
+        Vendor vendor;
+
 
     }
 
