@@ -30,7 +30,6 @@ public class VendorRepository {
             newRecord = dslContext.newRecord(VENDOR);
         } catch (Exception e) {
             log.error("Error in creating campaign", e);
-//            throw new CampaignServiceException(CampaignErrorCode.CAMPAIGN_CREATE_ERROR);
             throw new ApplicationError(
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 ErrorDetails.builder()
