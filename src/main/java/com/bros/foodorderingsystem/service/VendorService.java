@@ -10,8 +10,6 @@ import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import static com.bros.foodorderingsystem.model.tables.Vendor.VENDOR;
-
 @Service
 @Slf4j
 public class VendorService {
@@ -42,5 +40,7 @@ public class VendorService {
             .build();
 
     }
+
+
 
 }

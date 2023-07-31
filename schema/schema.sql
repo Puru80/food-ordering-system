@@ -82,3 +82,6 @@ create table public.order_rating
     updated_at timestamp    not null default now(),
     foreign key (order_id) references "order" (id)
 );
+
+ALTER TABLE public.student
+DROP COLUMN IF EXISTS phone;

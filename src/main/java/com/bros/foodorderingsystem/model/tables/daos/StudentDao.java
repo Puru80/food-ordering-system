@@ -89,20 +89,6 @@ public class StudentDao extends DAOImpl<StudentRecord, com.bros.foodorderingsyst
     }
 
     /**
-     * Fetch records that have <code>phone BETWEEN lowerInclusive AND upperInclusive</code>
-     */
-    public List<com.bros.foodorderingsystem.model.tables.pojos.Student> fetchRangeOfPhone(String lowerInclusive, String upperInclusive) {
-        return fetchRange(Student.STUDENT.PHONE, lowerInclusive, upperInclusive);
-    }
-
-    /**
-     * Fetch records that have <code>phone IN (values)</code>
-     */
-    public List<com.bros.foodorderingsystem.model.tables.pojos.Student> fetchByPhone(String... values) {
-        return fetch(Student.STUDENT.PHONE, values);
-    }
-
-    /**
      * Fetch records that have <code>created_at BETWEEN lowerInclusive AND upperInclusive</code>
      */
     public List<com.bros.foodorderingsystem.model.tables.pojos.Student> fetchRangeOfCreatedAt(LocalDateTime lowerInclusive, LocalDateTime upperInclusive) {
