@@ -1,10 +1,10 @@
 package com.bros.foodorderingsystem.repository;
 
-import com.bros.foodorderingsystem.api.request.CreateStudentRequest;
+import com.bros.foodorderingsystem.api.request.CreateItemRequest;
 import com.bros.foodorderingsystem.exception.ApplicationError;
 import com.bros.foodorderingsystem.exception.ErrorDetails;
-import com.bros.foodorderingsystem.model.tables.pojos.Student;
-import com.bros.foodorderingsystem.model.tables.records.StudentRecord;
+import com.bros.foodorderingsystem.model.tables.pojos.Item;
+import com.bros.foodorderingsystem.model.tables.records.ItemRecord;
 import lombok.extern.slf4j.Slf4j;
 import org.jooq.DSLContext;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,34 +13,36 @@ import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
-import static com.bros.foodorderingsystem.model.tables.Student.STUDENT;
-
 @Slf4j
 @Repository
-public class StudentRepository {
+public class ItemRepository {
 
     @Autowired
-    DSLContext dslContext;
+    private DSLContext dslContext;
 
-    public Student createStudent(CreateStudentRequest createStudentRequest) throws ApplicationError {
-        StudentRecord newRecord;
+    public Item createItem(CreateItemRequest createItemRequest) throws ApplicationError {
+
+        ItemRecord newRecord;
 
         try {
-            newRecord = dslContext.newRecord(STUDENT);
+            newRecord = dslContext.newRecord(com.bros.foodorderingsystem.model.tables.Item.ITEM);
         } catch (Exception e) {
             log.error("Error in creating campaign", e);
             throw new ApplicationError(
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 ErrorDetails.builder()
                     .code(50001)
-                    .detailedMessage("Error in creating student")
+                    .detailedMessage("Error in creating item")
                     .build()
             );
         }
 
-        newRecord.setId(createStudentRequest.getId());
-        newRecord.setName(createStudentRequest.getName());
-        newRecord.setEmail(createStudentRequest.getEmail());
+        newRecord.setId(UUID.randomUUID());
+        newRecord.setName(createItemRequest.getName());
+        newRecord.setPrice(createItemRequest.getPrice());
+        newRecord.setVendorId(UUID.fromString(createItemRequest.getVendorId()));
+        newRecord.setDescription(createItemRequest.getDescription());
+        newRecord.setPreparationtime(createItemRequest.getPreparationTime());
 
         int rowsInserted = newRecord.insert();
 
@@ -51,12 +53,12 @@ public class StudentRepository {
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 ErrorDetails.builder()
                     .code(50001)
-                    .detailedMessage("Error in creating student")
+                    .detailedMessage("Error in creating item")
                     .build()
             );
         }
 
-        return newRecord.into(Student.class);
-    }
+        return newRecord.into(Item.class);
 
+    }
 }

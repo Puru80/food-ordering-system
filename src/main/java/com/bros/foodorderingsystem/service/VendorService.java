@@ -15,9 +15,6 @@ import org.springframework.stereotype.Service;
 public class VendorService {
 
     @Autowired
-    DSLContext dslContext;
-
-    @Autowired
     VendorRepository vendorRepository;
 
     public CreateVendorResponse createVendor(CreateVendorRequest createVendorRequest) throws ApplicationError {

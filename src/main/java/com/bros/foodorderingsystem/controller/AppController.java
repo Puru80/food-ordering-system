@@ -2,6 +2,7 @@ package com.bros.foodorderingsystem.controller;
 
 import com.bros.foodorderingsystem.api.request.CreateStudentRequest;
 import com.bros.foodorderingsystem.api.request.CreateVendorRequest;
+import com.bros.foodorderingsystem.api.response.CreateStudentResponse;
 import com.bros.foodorderingsystem.api.response.CreateVendorResponse;
 import com.bros.foodorderingsystem.api.response.FoodResponse;
 import com.bros.foodorderingsystem.exception.ApplicationError;
@@ -32,10 +33,11 @@ public class AppController {
         return ResponseEntity.ok().body(vendorService.createVendor(request));
     }
 
-    //TODO: Refactor this to student response
     @PostMapping("/student/create")
-    public ResponseEntity<Student> createStudent(@RequestBody CreateStudentRequest request) throws ApplicationError {
+    public ResponseEntity<CreateStudentResponse> createStudent(@RequestBody CreateStudentRequest request) throws ApplicationError {
         return ResponseEntity.ok().body(stud.createStudent(request));
     }
+
+
 
 }
