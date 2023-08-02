@@ -1,12 +1,15 @@
 package com.bros.foodorderingsystem.controller;
 
+import com.bros.foodorderingsystem.api.request.CreateItemRequest;
 import com.bros.foodorderingsystem.api.request.CreateStudentRequest;
 import com.bros.foodorderingsystem.api.request.CreateVendorRequest;
+import com.bros.foodorderingsystem.api.response.CreateItemResponse;
 import com.bros.foodorderingsystem.api.response.CreateStudentResponse;
 import com.bros.foodorderingsystem.api.response.CreateVendorResponse;
 import com.bros.foodorderingsystem.api.response.FoodResponse;
 import com.bros.foodorderingsystem.exception.ApplicationError;
 import com.bros.foodorderingsystem.model.tables.pojos.Student;
+import com.bros.foodorderingsystem.service.ItemService;
 import com.bros.foodorderingsystem.service.StudentService;
 import com.bros.foodorderingsystem.service.VendorService;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +31,9 @@ public class AppController {
     @Autowired
     private StudentService stud;
 
+    @Autowired
+    private ItemService itemService;
+
     @PostMapping("/vendor/create")
     public ResponseEntity<CreateVendorResponse> createVendor(@RequestBody CreateVendorRequest request) throws ApplicationError {
         return ResponseEntity.ok().body(vendorService.createVendor(request));
@@ -38,6 +44,9 @@ public class AppController {
         return ResponseEntity.ok().body(stud.createStudent(request));
     }
 
-
+    @PostMapping("/item/create")
+    public ResponseEntity<CreateItemResponse> createItem(@RequestBody CreateItemRequest request) throws ApplicationError {
+        return ResponseEntity.ok().body(itemService.createItem(request));
+    }
 
 }
