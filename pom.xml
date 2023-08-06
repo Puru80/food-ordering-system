@@ -61,11 +61,6 @@
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-cache</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
@@ -73,6 +68,22 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>19.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>4.3.10.RELEASE</version>
         </dependency>
 
     </dependencies>
@@ -99,9 +110,9 @@
                     <execution>
                         <id>generate-postgres</id>
                         <phase>generate-sources</phase>
-                       <!-- <goals>
-                            <goal>generate</goal>
-                        </goals>-->
+                        <!-- <goals>
+                             <goal>generate</goal>
+                         </goals>-->
                         <configuration>
                             <!-- JDBC connection parameters -->
                             <jdbc>
