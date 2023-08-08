@@ -23,7 +23,6 @@ public class StudentService {
             throw e;
         }
 
-
         return CreateStudentResponse.builder()
             .studentId(student.getId())
             .email(student.getEmail())

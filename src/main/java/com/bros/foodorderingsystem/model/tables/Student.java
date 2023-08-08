@@ -118,7 +118,7 @@ public class Student extends TableImpl<StudentRecord> {
 
     @Override
     public List<UniqueKey<StudentRecord>> getKeys() {
-        return Arrays.<UniqueKey<StudentRecord>>asList(Keys.STUDENT_PKEY);
+        return Arrays.<UniqueKey<StudentRecord>>asList(Keys.STUDENT_PKEY, Keys.EMAIL_UNIQUE);
     }
 
     @Override

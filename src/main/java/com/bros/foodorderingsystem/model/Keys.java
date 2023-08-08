@@ -39,7 +39,9 @@ public class Keys {
     public static final UniqueKey<OrderRecord> ORDER_PKEY = Internal.createUniqueKey(Order.ORDER, DSL.name("order_pkey"), new TableField[] { Order.ORDER.ID }, true);
     public static final UniqueKey<OrderItemsRecord> ORDER_ITEMS_PKEY = Internal.createUniqueKey(OrderItems.ORDER_ITEMS, DSL.name("order_items_pkey"), new TableField[] { OrderItems.ORDER_ITEMS.ID }, true);
     public static final UniqueKey<OrderRatingRecord> ORDER_RATING_PKEY = Internal.createUniqueKey(OrderRating.ORDER_RATING, DSL.name("order_rating_pkey"), new TableField[] { OrderRating.ORDER_RATING.ID }, true);
+    public static final UniqueKey<StudentRecord> EMAIL_UNIQUE = Internal.createUniqueKey(Student.STUDENT, DSL.name("email_unique"), new TableField[] { Student.STUDENT.EMAIL }, true);
     public static final UniqueKey<StudentRecord> STUDENT_PKEY = Internal.createUniqueKey(Student.STUDENT, DSL.name("student_pkey"), new TableField[] { Student.STUDENT.ID }, true);
+    public static final UniqueKey<VendorRecord> LOCATION_UNIQUE = Internal.createUniqueKey(Vendor.VENDOR, DSL.name("location_unique"), new TableField[] { Vendor.VENDOR.LOCATION }, true);
     public static final UniqueKey<VendorRecord> VENDOR_PKEY = Internal.createUniqueKey(Vendor.VENDOR, DSL.name("vendor_pkey"), new TableField[] { Vendor.VENDOR.ID }, true);
 
     // -------------------------------------------------------------------------

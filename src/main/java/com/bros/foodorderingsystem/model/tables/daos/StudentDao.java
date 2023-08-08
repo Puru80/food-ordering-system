@@ -89,6 +89,13 @@ public class StudentDao extends DAOImpl<StudentRecord, com.bros.foodorderingsyst
     }
 
     /**
+     * Fetch a unique record that has <code>email = value</code>
+     */
+    public com.bros.foodorderingsystem.model.tables.pojos.Student fetchOneByEmail(String value) {
+        return fetchOne(Student.STUDENT.EMAIL, value);
+    }
+
+    /**
      * Fetch records that have <code>created_at BETWEEN lowerInclusive AND upperInclusive</code>
      */
     public List<com.bros.foodorderingsystem.model.tables.pojos.Student> fetchRangeOfCreatedAt(LocalDateTime lowerInclusive, LocalDateTime upperInclusive) {
