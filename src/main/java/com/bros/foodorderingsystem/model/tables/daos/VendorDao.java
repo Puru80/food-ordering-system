@@ -104,6 +104,13 @@ public class VendorDao extends DAOImpl<VendorRecord, com.bros.foodorderingsystem
     }
 
     /**
+     * Fetch a unique record that has <code>location = value</code>
+     */
+    public com.bros.foodorderingsystem.model.tables.pojos.Vendor fetchOneByLocation(String value) {
+        return fetchOne(Vendor.VENDOR.LOCATION, value);
+    }
+
+    /**
      * Fetch records that have <code>acceptingorders BETWEEN lowerInclusive AND upperInclusive</code>
      */
     public List<com.bros.foodorderingsystem.model.tables.pojos.Vendor> fetchRangeOfAcceptingorders(Boolean lowerInclusive, Boolean upperInclusive) {

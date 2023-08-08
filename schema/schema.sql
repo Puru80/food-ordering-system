@@ -82,3 +82,17 @@ create table public.order_rating
     updated_at timestamp    not null default now(),
     foreign key (order_id) references "order" (id)
 );
+
+ALTER TABLE public.student
+DROP
+COLUMN IF EXISTS phone;
+
+ALTER TABLE public.student
+    ADD Constraint email_unique UNIQUE (email);
+ALTER TABLE public.student
+    ADD Constraint phone_unique UNIQUE (phone);
+
+ALTER TABLE public.vendor
+    ADD constraint email_unique UNIQUE (email);
+alter table public.vendor
+    add constraint location_unique UNIQUE (location);

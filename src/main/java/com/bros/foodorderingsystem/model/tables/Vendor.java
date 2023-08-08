@@ -139,7 +139,7 @@ public class Vendor extends TableImpl<VendorRecord> {
 
     @Override
     public List<UniqueKey<VendorRecord>> getKeys() {
-        return Arrays.<UniqueKey<VendorRecord>>asList(Keys.VENDOR_PKEY);
+        return Arrays.<UniqueKey<VendorRecord>>asList(Keys.VENDOR_PKEY, Keys.LOCATION_UNIQUE);
     }
 
     @Override

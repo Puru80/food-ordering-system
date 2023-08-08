@@ -16,7 +16,7 @@ import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row6;
+import org.jooq.Row5;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -62,11 +62,6 @@ public class Student extends TableImpl<StudentRecord> {
      * The column <code>public.student.email</code>.
      */
     public final TableField<StudentRecord, String> EMAIL = createField(DSL.name("email"), SQLDataType.VARCHAR(255).nullable(false), this, "");
-
-    /**
-     * The column <code>public.student.phone</code>.
-     */
-    public final TableField<StudentRecord, String> PHONE = createField(DSL.name("phone"), SQLDataType.VARCHAR(255).nullable(false), this, "");
 
     /**
      * The column <code>public.student.created_at</code>.
@@ -123,7 +118,7 @@ public class Student extends TableImpl<StudentRecord> {
 
     @Override
     public List<UniqueKey<StudentRecord>> getKeys() {
-        return Arrays.<UniqueKey<StudentRecord>>asList(Keys.STUDENT_PKEY);
+        return Arrays.<UniqueKey<StudentRecord>>asList(Keys.STUDENT_PKEY, Keys.EMAIL_UNIQUE);
     }
 
     @Override
@@ -153,11 +148,11 @@ public class Student extends TableImpl<StudentRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row6 type methods
+    // Row5 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row6<String, String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
-        return (Row6) super.fieldsRow();
+    public Row5<String, String, String, LocalDateTime, LocalDateTime> fieldsRow() {
+        return (Row5) super.fieldsRow();
     }
 }

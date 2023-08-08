@@ -19,7 +19,6 @@ public class Student implements Serializable {
     private String        id;
     private String        name;
     private String        email;
-    private String        phone;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
@@ -29,7 +28,6 @@ public class Student implements Serializable {
         this.id = value.id;
         this.name = value.name;
         this.email = value.email;
-        this.phone = value.phone;
         this.createdAt = value.createdAt;
         this.updatedAt = value.updatedAt;
     }
@@ -38,14 +36,12 @@ public class Student implements Serializable {
         String        id,
         String        name,
         String        email,
-        String        phone,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
     ) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.phone = phone;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -92,21 +88,6 @@ public class Student implements Serializable {
      */
     public Student setEmail(String email) {
         this.email = email;
-        return this;
-    }
-
-    /**
-     * Getter for <code>public.student.phone</code>.
-     */
-    public String getPhone() {
-        return this.phone;
-    }
-
-    /**
-     * Setter for <code>public.student.phone</code>.
-     */
-    public Student setPhone(String phone) {
-        this.phone = phone;
         return this;
     }
 
@@ -167,12 +148,6 @@ public class Student implements Serializable {
         }
         else if (!email.equals(other.email))
             return false;
-        if (phone == null) {
-            if (other.phone != null)
-                return false;
-        }
-        else if (!phone.equals(other.phone))
-            return false;
         if (createdAt == null) {
             if (other.createdAt != null)
                 return false;
@@ -195,7 +170,6 @@ public class Student implements Serializable {
         result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
         result = prime * result + ((this.name == null) ? 0 : this.name.hashCode());
         result = prime * result + ((this.email == null) ? 0 : this.email.hashCode());
-        result = prime * result + ((this.phone == null) ? 0 : this.phone.hashCode());
         result = prime * result + ((this.createdAt == null) ? 0 : this.createdAt.hashCode());
         result = prime * result + ((this.updatedAt == null) ? 0 : this.updatedAt.hashCode());
         return result;
@@ -208,7 +182,6 @@ public class Student implements Serializable {
         sb.append(id);
         sb.append(", ").append(name);
         sb.append(", ").append(email);
-        sb.append(", ").append(phone);
         sb.append(", ").append(createdAt);
         sb.append(", ").append(updatedAt);
 
