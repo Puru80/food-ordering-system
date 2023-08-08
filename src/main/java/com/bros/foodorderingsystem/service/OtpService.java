@@ -15,22 +15,22 @@ public class OtpService {
     private static final String NUMERIC_CHARS = "0123456789";
     private static final int LENGTH = 6;
 
-    private LoadingCache<String, Integer> otpCache;
+    private final LoadingCache<String, String> otpCache;
 
     public OtpService() {
         super();
         otpCache = CacheBuilder.newBuilder().
             expireAfterWrite(TIME_TO_LIVE, TimeUnit.MINUTES)
             .build(new CacheLoader<>() {
-                public Integer load(String key) {
-                    return 0;
+                public String load(String key) {
+                    return "0";
                 }
             });
     }
 
-    public String getOtp() {
+    public String putOtp(String key) {
         String otp = generateOTP();
-        otpCache.put(otp, 0);
+        otpCache.put(key, otp);
         return otp;
     }
 
